@@ -1,0 +1,14 @@
+@mixin flexRows {
+    display: flex;
+    flex-direction: row;
+}
+@mixin flexCols {
+    display: flex;
+    flex-direction: coloumn;
+}
+@mixin center {
+    position: relative;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
