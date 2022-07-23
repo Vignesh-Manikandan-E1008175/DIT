@@ -1,0 +1,71 @@
+
+.not-found-container {
+    width: 100%;
+    height: 100vh;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    
+    &__img {
+        width: 50vw;
+        min-width: 315px;
+        min-height: 315px;
+        max-width: 650px;
+        max-height: 650px;
+    }
+    &__description {
+        width: auto;
+        height: min-content;
+        padding: 0.5em 0;
+        font-weight: bold;
+        font-family: Syne, 'sans-serif';
+        color: $dark-bg;
+        margin: 0 1.5em 3em 1.5em;
+    }
+}
+
+@media screen and (min-width: 0px) and (max-width: $sdmin) {
+    .not-found-container {
+        &__description {
+            font-size: x-small;
+        }
+        &__button {
+            transform: scale(0.8);
+        }
+    }
+}
+
+@media screen and (min-width: 481px) and (max-width: $sdmax) {
+    .not-found-container {
+        &__description {
+            font-size: small;
+        }
+        &__button {
+            transform: scale(1.2);
+        }
+    }
+}
+
+@media screen and (min-width: 768px) and (max-width: $fhdmin) {
+    .not-found-container {
+        &__description {
+            font-size: medium;
+        }
+        &__button {
+            transform: scale(1.2);
+        }
+    }
+}
+
+@media screen and (min-width: 1025px) and (max-width: $qhd) {
+    .not-found-container {
+        &__description {
+            font-size: large;
+        }
+        &__button {
+            transform: scale(1.5);
+        }
+    }
+}
