@@ -12,3 +12,17 @@
     top: 50%;
     transform: translate(-50%, -50%);
 }
+
+@mixin centerHorizontally {
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+@mixin centerVertically {
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+@mixin appMargin {
+    margin: 1.5em 3em;
+}
