@@ -1,0 +1,36 @@
+// Button defaults
+.customButton {
+    border: none;
+    text-decoration: none;
+    cursor: pointer;
+    padding: 1em 1.5em;
+    border-radius: 50px;
+
+    a {
+        text-decoration: none;
+    }
+}
+
+// Neumorphism
+.default-light-button {
+    border-radius: 35px;
+    background: $light-bg;
+    box-shadow: -11px -11px 22px #c4c4c4, 11px 11px 22px #ffffff;
+    
+    a {
+        color: $dark-bg;
+        &.active {
+            color: $extra-dark-active;
+        }
+    }
+}
+
+.hovered-light-button {
+    border-radius: 35px;
+    background: $light-bg;
+    box-shadow: inset -11px -11px 22px #c4c4c4, inset 11px 11px 22px #ffffff;
+    
+    a, &.active {
+        color: $extra-dark-active;
+    }
+}
