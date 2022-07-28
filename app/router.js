@@ -7,6 +7,9 @@ const Router = Ember.Router.extend({
 });
 
 Router.map(function() {
+  this.route('not-found', { path: '/*path'});
+  this.route('pending');
+  this.route('completed');
 });
 
 export default Router;

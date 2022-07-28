@@ -1,0 +1,98 @@
+.navbar {
+    margin-bottom: 2.5em;
+    &__menu {
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: nowrap;
+        align-content: center;
+        align-items: center;
+    }
+
+    &__item {
+        list-style-type: none;
+        display: flex;
+        flex-wrap: nowrap;
+        flex-direction: row;
+        align-content: center;
+        justify-content: center;
+        align-items: center;
+        
+        &--logo {
+            a {
+                color: $dark-active;
+                border: 0.1em solid $extra-dark-active;
+                box-shadow: -6px 6px 0px 1px;
+                border-radius: 20%;
+            }
+            img {
+                width: 35px;
+                height: 30px;
+                border-radius: 20px;
+                padding: 0.5em;
+            }
+            p {
+                margin: 0 1em;
+                font-size: medium;
+                color: $dark-bg;
+                font-weight: 700;
+
+                i {
+                    color: $extra-dark-active;
+                }
+            }
+        }
+    }
+}
+
+@media screen and (min-width: 0px) and (max-width: $sdmin) {
+    .navbar {
+        &__item {
+            &--logo {
+                img {
+                    width: 25px;
+                    height: 20px;
+                }
+                p {
+                    font-size: small;
+                }
+            }
+        }
+    }
+}
+
+@media screen and (min-width: 481px) and (max-width: $sdmax) {
+    .navbar {
+        &__item {
+            &--logo {
+                img {
+                    width: 25px;
+                    height: 20px;
+                }
+            }
+        }
+    }
+}
+
+@media screen and (min-width: 768px) and (max-width: $fhdmin) {
+    .navbar {
+        &__item {
+            &--logo {
+                p {
+                    font-size: large;
+                }
+            }
+        }
+    }
+}
+
+@media screen and (min-width: 1025px) {
+    .navbar {
+        &__item {
+            &--logo {
+                p {
+                    font-size: x-large;
+                }
+            }
+        }
+    }
+}

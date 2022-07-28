@@ -2,7 +2,9 @@ import Ember from 'ember';
 
 export default Ember.Component.extend({
     click(e) {
-        if (e.target.children.length > 0) e.target.children[0].click();
+        if (e.target.children.length > 0 && e.target.children[0].tagName === 'A') {
+            e.target.children[0].click();
+        }
     },
     mouseEnter(e) {
         if (e.target.classList.contains("default-light-button")) {

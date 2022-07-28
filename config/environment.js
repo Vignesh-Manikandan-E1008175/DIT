@@ -20,7 +20,17 @@ module.exports = function(environment) {
     APP: {
       // Here you can pass flags/options to your application instance
       // when it is created
-    }
+    },
+    contentSecurityPolicy: { 'connect-src': "'self' https://auth.firebase.com wss://*.firebaseio.com" },
+    firebase: {
+      apiKey: "AIzaSyBB49AcuEv_6HGD9OnvH-kLMsj41GLgAGE",
+      authDomain: "newagent-24020.firebaseapp.com",
+      databaseURL: "https://newagent-24020.firebaseio.com",
+      projectId: "newagent-24020",
+      storageBucket: "newagent-24020.appspot.com",
+      messagingSenderId: "668972350559",
+      appId: "1:668972350559:web:090179e90e8618141cefea"
+    },
   };
 
   if (environment === 'development') {
