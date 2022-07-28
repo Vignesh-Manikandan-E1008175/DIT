@@ -1,0 +1,11 @@
+<ul class="navbar__menu">
+    <li class="navbar__item navbar__item--logo">
+        {{#link-to "index"}}
+            <img src="/assets/images/dit-logo-dark.svg" alt="logo">
+        {{/link-to}}
+        <p>Hello, <i>{{userName}}</i> 👋</p>
+    </li>
+    <li class="navbar__item navbar__item--user">
+        {{custom-dropdown class="user__dropdown"}}
+    </li>
+</ul>
