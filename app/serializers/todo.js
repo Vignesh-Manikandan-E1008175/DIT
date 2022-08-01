@@ -5,7 +5,6 @@ export default DS.RESTSerializer.extend({
         payload = {
             todos: payload
         };
-        console.log(payload);
         return this._super(store, primaryModelClass, payload, id, requestType);
     }
 });

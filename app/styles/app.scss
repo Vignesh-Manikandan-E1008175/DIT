@@ -1,12 +1,298 @@
-@import url('https://fonts.googleapis.com/css2?family=Outfit&family=Syne&display=swap');
-@import 'colors', 'mixins';
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100;200;300;400;500;600;700;800&family=Syne:wght@100;200;300;400;500;600;700;800&display=swap');
+@import 'screens', 'colors', 'mixins', 'nav-bar', 'custom-button', 'custom-dropdown', 'todo', 'not-found';
 
 *, html, body {
     margin: 0;
     padding: 0;
-    font-family: Outfit, 'sans-serif';
+    font-family: Syne, 'sans-serif';
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+    background-color: $light-bg;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    color: $dark-bg;
+    font-weight: 900;
+    margin: 1em;
+    width: max-content;
+}
+
+.app {
+    height: 100%;
+    @include appMargin();
+
+    &__routeSwitcher {
+        z-index: 999;
+        display: flex;
+        justify-content: flex-start;
+        flex-wrap: nowrap;
+        position: absolute;
+        bottom: 5em;
+        @include centerHorizontally();
+
+        li {
+            list-style-type: none;
+            margin-right: 2em;
+            
+            &:nth-child(3) {
+                margin-right: 0;
+            }
+        }
+    }
+
+    &__landing-page {
+        height: 70vh;
+        padding: 2em 0 0 0;
+        text-align: center;
+        overflow-y: scroll;
+
+        img.no-data-image {
+            width: 100%;
+            max-width: 35em;
+        }
+
+        p.description {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: x-large;
+            padding: 0 2em;
+            position: absolute;
+            @include centerHorizontally();
+            color: $extra-dark-active;
+            line-height: 1em;
+            width: 90%;
+        }
+
+        .createTodoForm {
+            width: 100%;
+            max-width: 55em;
+            min-width: 15em;
+            display: inline-flex;
+            flex-direction: column;
+            flex-wrap: nowrap;
+            justify-content: space-evenly;
+            align-items: center;
+            padding: 2.5em;
+            position: relative;
+            @include centerVertically();
+
+            label {
+                margin: 0 0 2em 0;
+                font-size: large;
+                font-weight: 900;
+
+            }
+
+            input#createTodoTextfield {
+                border: none;
+                background-color: $white;
+                border-radius: 5px;
+                padding: 0.5em;
+                margin: 0 0 0.5em 0;
+                width: 100%;
+                max-width: 60em;
+                min-width: 5rem;
+                &:focus {
+                    outline: 0.1em solid $extra-dark-active;
+                }
+                &::placeholder {
+                    font-size: x-small;
+                    font-family: Outfit, 'sans-serif';
+                    color: $dark-bg;
+                    opacity: 0.7;
+                    padding: 0.5em 1em;
+                }
+            }
+
+            p#createTodoTextfield-help-text {
+                display: none;
+                font-size: x-small;
+                align-self: flex-start;
+                color: $alert;
+                font-style: italic;
+                margin: 0 0 0 3.5em;
+            }
+
+            .createTodoButtons {
+                margin: 2em 0 0 0;
+                .submitTodo, .closeTodo {
+                    display: inline-block;
+                    margin: 0 0.5em;
+                    transform: scale(0.75);
     
-    h1, h2, h3, h4, h5, h6 {
-        font-family: Syne, 'sans-serif';
+                    img {
+                        width: 20px;
+                        height: 20px;
+                    }
+                }
+            }
+        }
+
+        .create-todo {
+            width: max-content;
+            padding: 0.5em 1em;
+            display: inline-flex;
+            align-content: center;
+            flex-wrap: nowrap;
+            justify-content: center;
+            align-items: center;
+            font-size: large;
+            color: $dark-bg;
+
+            &:hover {
+                color: $extra-dark-active;
+            }
+
+            img {
+                width: 20px;
+                height: 20px;
+                margin-right: 10px;
+            }
+        }
     }
 }
+
+.footer {
+    position: absolute;
+    bottom: 1em;
+    width: max-content;
+    @include centerHorizontally();
+    display: flex;
+    flex-direction: column;
+    font-family: Outfit, 'sans-serif';
+    font-size: small;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: nowrap;
+
+    .author, .attributions {
+        a {
+            color: $extra-dark-active;
+            text-decoration: none;
+
+            &:hover {
+                color: $dark-active;
+            }
+        }
+    }
+}
+
+@media screen and (min-width: 0px) and (max-width: $sdmin) {
+    .app {
+        margin: 0.5em 1em;
+        &__routeSwitcher {
+            font-size: x-small;
+            bottom: 10em;
+        }
+        &__landing-page {
+            padding: 2em 0 0 0;
+            img.no-data-image {
+                width: 100%;
+            }
+            p.description {
+                padding: 0;
+                font-size: medium;
+                .create-todo {
+                    font-size: small;
+                    img {
+                        width: 15px;
+                        height: 15px;
+                    }
+                }
+            }
+            .createTodoForm {
+                width: 75%;
+                p#createTodoTextfield-help-text {
+                    margin: 0 0 0 -0.5em;
+                    font-size: xx-small;
+                }
+            }
+        }
+    }
+    .footer {
+        font-size: xx-small;
+        bottom: 2em;
+    }
+}
+
+@media screen and (min-width: 481px) and (max-width: $sdmax) {
+    .app {
+        margin: 0.5em 1em;
+        &__routeSwitcher {
+            font-size: small;
+            bottom: 10em;
+        }
+        &__landing-page {
+            padding: 2em 0 0 0;
+            height: 65vh;
+            img.no-data-image {
+                width: 80%;
+            }
+            p.description {
+                padding: 0;
+                font-size: large;
+                .create-todo {
+                    font-size: medium;
+                    img {
+                        width: 15px;
+                        height: 15px;
+                    }
+                }
+            }
+            .createTodoForm {
+                width: 75%;
+                p#createTodoTextfield-help-text {
+                    margin: 0 0 0 -0.5em;
+                }
+            }
+        }
+    }
+    .footer {
+        font-size: x-small;
+        bottom: 2em;
+    }
+}
+
+@media screen and (min-width: 768px) and (max-width: $fhdmin) {
+    .app {
+        margin: 0.5em 1em;
+        &__routeSwitcher {
+            font-size: small;
+            bottom: 10em;
+        }
+        &__landing-page {
+            padding: 0;
+            img.no-data-image {
+                width: 80%;
+            }
+            p.description {
+                padding: 0;
+                font-size: large;
+                .create-todo {
+                    font-size: medium;
+                    img {
+                        width: 20px;
+                        height: 22px;
+                    }
+                }
+            }
+            .createTodoForm {
+                width: 75%;
+                p#createTodoTextfield-help-text {
+                    margin: 0 0 0 0;
+                }
+            }
+        }
+    }
+    .footer {
+        font-size: small;
+        bottom: 2em;
+    }
+}
+
+@media screen and (min-width: 1025px) and (max-width: $qhd) {}
