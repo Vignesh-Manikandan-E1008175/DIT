@@ -23,13 +23,13 @@ module.exports = function(environment) {
     },
     contentSecurityPolicy: { 'connect-src': "'self' https://auth.firebase.com wss://*.firebaseio.com" },
     firebase: {
-      apiKey: "AIzaSyBB49AcuEv_6HGD9OnvH-kLMsj41GLgAGE",
-      authDomain: "newagent-24020.firebaseapp.com",
-      databaseURL: "https://newagent-24020.firebaseio.com",
+      apiKey: process.env.FIREBASE_KEY,
+      authDomain: process.env.AUTH_DOMAIN,
+      databaseURL: process.env.FIRESTORE_DB,
       projectId: "newagent-24020",
-      storageBucket: "newagent-24020.appspot.com",
+      storageBucket: process.env.FIREBASE_URL,
       messagingSenderId: "668972350559",
-      appId: "1:668972350559:web:090179e90e8618141cefea"
+      appId: process.env.APP_ID
     },
   };
 
