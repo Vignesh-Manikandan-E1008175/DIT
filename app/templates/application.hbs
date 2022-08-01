@@ -20,8 +20,8 @@
 
     <section class="app__landing-page">
         {{#if (eq currentRouteName 'index')}}
-        <h1>All Tasks</h1>
             {{#if (and todos.length (not inCreateMode))}}
+            <h1>All Tasks</h1>
                 {{#custom-button class="create-todo customButton default-light-button" click=(action 'initiateTodoCreation')}}<img src="/assets/icons/plus.svg" alt="+" width="20" height="20">Create Task{{/custom-button}}
                 {{#each todos as |todo|}}
                     {{#todo-item todo=todo showList=showTodoList}}{{/todo-item}}

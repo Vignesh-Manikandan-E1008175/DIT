@@ -7,6 +7,6 @@ export default Controller.extend({
     completedTodos: Ember.computed('todos.[]', function() {
         return this.store.peekAll('todo').filter(function(todo) {
             return todo.get('completed') === true;
-        })
+        });
     })
 });

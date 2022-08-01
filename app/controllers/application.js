@@ -1,7 +1,6 @@
 import Ember from 'ember';
-import todo from '../serializers/todo';
 
-const { Controller, computed } = Ember;
+const { Controller, computed, $ } = Ember;
 
 export default Controller.extend({
     todos: computed.alias('model'),
