@@ -1,0 +1,13 @@
+<form class="todo default-light-button">
+    {{#if inEditMode}}
+        {{input type="checkbox" id=(concat 'checkbox-' todo.id) checked=isDone click=(action 'toggleTodo' todo)}}
+        {{input type="text" id=(concat 'text-' todo.id) value=editModeTitle}}
+        {{#custom-button class="helper-button confirm-edit-todo customButton default-light-button" click=(action 'confirmEdit' todo)}}<img src="/assets/icons/done.svg" width="15" height="15">{{/custom-button}}
+        {{#custom-button class="helper-button exit-edit-todo customButton default-light-button" click=(action 'cancelEdit' todo)}}<img src="/assets/icons/close.svg" width="15" height="15">{{/custom-button}}
+    {{else}}
+        {{input type="checkbox" id=(concat 'checkbox-' todo.id) checked=isDone click=(action 'toggleTodo' todo)}}
+        <p class='todo-item {{if todo.completed "completed" ""}}'>{{todo.title}}</p>
+        {{#custom-button class="helper-button edit-todo customButton default-light-button" click=(action 'initiateEditMode' todo.title)}}<img src="/assets/icons/edit.svg" width="15" height="15">{{/custom-button}}
+    {{/if}}
+    {{#custom-button class="helper-button delete-todo customButton default-light-button" click=(action 'deleteTodo' todo.id)}}<img src="/assets/icons/trash.svg" width="17" height="17">{{/custom-button}}
+</form>
