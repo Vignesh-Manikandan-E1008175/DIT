@@ -1,4 +1,8 @@
 <h1>Completed Tasks</h1>
-{{#each completedTodos as |todo|}}
-    {{#todo-item todo=todo showList=showTodoList}}{{/todo-item}}
-{{/each}}
+{{#if completedTodos.length}}
+    {{#each completedTodos as |todo|}}
+        {{#todo-item todo=todo showList=showTodoList}}{{/todo-item}}
+    {{/each}}
+{{else}}
+<p>No tasks to display.</p>
+{{/if}}
