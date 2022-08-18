@@ -17,5 +17,13 @@ export default Ember.Component.extend({
             e.target.classList.remove("hovered-light-button");
             e.target.classList.add("default-light-button");
         }
+    },
+    actions: {
+        login: function(provider) {
+            this.sendAction('login', provider);
+        },
+        logout: function() {
+            this.sendAction('logout');
+        } 
     }
 });
