@@ -1,54 +1,58 @@
-<main class="app">
-    {{#nav-bar class="navbar"}}{{/nav-bar}}
-    <ul class="app__routeSwitcher">
-        <li>
-            {{#custom-button class="customButton default-light-button"}}
-                {{#link-to "index"}}ALL{{/link-to}}
-            {{/custom-button}}
-        </li>
-        <li>
-            {{#custom-button class="customButton default-light-button"}}
-                {{#link-to "pending"}}PENDING{{/link-to}}
-            {{/custom-button}}
-        </li>
-        <li>
-            {{#custom-button class="customButton default-light-button"}}
-                {{#link-to "completed"}}COMPLETED{{/link-to}}
-            {{/custom-button}}
-        </li>
-    </ul>
+{{#if session.isAuthenticated}}
+    <main class="app">
+        {{#nav-bar class="navbar" users=model.users logout=(action 'logout')}}{{/nav-bar}}
+        <ul class="app__routeSwitcher">
+            <li>
+                {{#custom-button class="customButton default-light-button"}}
+                    {{#link-to "index"}}ALL{{/link-to}}
+                {{/custom-button}}
+            </li>
+            <li>
+                {{#custom-button class="customButton default-light-button"}}
+                    {{#link-to "pending"}}PENDING{{/link-to}}
+                {{/custom-button}}
+            </li>
+            <li>
+                {{#custom-button class="customButton default-light-button"}}
+                    {{#link-to "completed"}}COMPLETED{{/link-to}}
+                {{/custom-button}}
+            </li>
+        </ul>
 
-    <section class="app__landing-page">
-        {{#if (eq currentRouteName 'index')}}
-            {{#if (and todos.length (not inCreateMode))}}
-            <h1>All Tasks</h1>
-                {{#custom-button class="create-todo customButton default-light-button" click=(action 'initiateTodoCreation')}}<img src="/assets/icons/plus.svg" alt="+" width="20" height="20">Create Task{{/custom-button}}
-                {{#each todos as |todo|}}
-                    {{#todo-item todo=todo showList=showTodoList}}{{/todo-item}}
-                {{/each}}
-            {{else}}
-                {{#if inCreateMode}}
-                    <form class="createTodoForm default-light-button">
-                        <label for="createTodoTextfield">New Task</label>
-                        {{input id="createTodoTextfield" type="text" placeholder="Jot something down.." value=title autocomplete="off" autofocus="autofocus" required="required" maxlength="1024" class="default-light-button"}}
-                        <p id="createTodoTextfield-help-text">Invalid/No input</p>
-                        <div class="createTodoButtons">
-                            {{#custom-button class="submitTodo customButton default-light-button" click=(action 'createTodo')}}<img src="/assets/icons/done.svg" alt="done">{{/custom-button}}
-                            {{#custom-button class="closeTodo customButton default-light-button" click=(action 'cancelCreateTodo')}}<img src="/assets/icons/close.svg" alt="close">{{/custom-button}}
-                        </div>
-                    </form>
+        <section class="app__landing-page">
+            {{#if (eq currentRouteName 'index')}}
+                {{#if (and todos.length (not inCreateMode))}}
+                <h1>All Tasks</h1>
+                    {{#custom-button class="create-todo customButton default-light-button" click=(action 'initiateTodoCreation')}}<img src="/assets/icons/plus.svg" alt="+" width="20" height="20">Create Task{{/custom-button}}
+                    {{#each todos as |todo|}}
+                        {{#todo-item todo=todo showList=showTodoList}}{{/todo-item}}
+                    {{/each}}
                 {{else}}
-                    {{#if (not todos.length)}}
-                        <img class="no-data-image" src="/assets/images/no-data.svg" alt="nothing to show">
-                        <p class="description">Add a task by clicking the &nbsp;{{#custom-button class="create-todo customButton default-light-button" click=(action 'initiateTodoCreation')}}<img src="/assets/icons/plus.svg" alt="+" width="20" height="20">New Task{{/custom-button}} &nbsp;button.</p>
+                    {{#if inCreateMode}}
+                        <form class="createTodoForm default-light-button">
+                            <label for="createTodoTextfield">New Task</label>
+                            {{input id="createTodoTextfield" type="text" placeholder="Jot something down.." value=title autocomplete="off" autofocus="autofocus" required="required" maxlength="1024" class="default-light-button"}}
+                            <p id="createTodoTextfield-help-text">Invalid/No input</p>
+                            <div class="createTodoButtons">
+                                {{#custom-button class="submitTodo customButton default-light-button" click=(action 'createTodo')}}<img src="/assets/icons/done.svg" alt="done">{{/custom-button}}
+                                {{#custom-button class="closeTodo customButton default-light-button" click=(action 'cancelCreateTodo')}}<img src="/assets/icons/close.svg" alt="close">{{/custom-button}}
+                            </div>
+                        </form>
+                    {{else}}
+                        {{#if (not todos.length)}}
+                            <img class="no-data-image" src="/assets/images/no-data.svg" alt="nothing to show">
+                            <p class="description">Add a task by clicking the &nbsp;{{#custom-button class="create-todo customButton default-light-button" click=(action 'initiateTodoCreation')}}<img src="/assets/icons/plus.svg" alt="+" width="20" height="20">New Task{{/custom-button}} &nbsp;button.</p>
+                        {{/if}}
                     {{/if}}
                 {{/if}}
             {{/if}}
-        {{/if}}
-        {{outlet}}
-    </section>
-</main>
-<footer class="footer">
-    <p class="author">&copy;2022 Do It Tomorrow | <a href="https://www.github.com/vigneshmanikandan97" target="_blank">Vignesh Manikandan</a> | All Rights Reserved</p>
-    <p class="attributions">Illustrations by <a href="https://storyset.com/data" target="_blank">Storyset</a></p>
-</footer>
+            {{outlet}}
+        </section>
+    </main>
+    <footer class="footer">
+        <p class="author">&copy;2022 Do It Tomorrow | <a href="https://www.github.com/vigneshmanikandan97" target="_blank">Vignesh Manikandan</a> | All Rights Reserved</p>
+        <p class="attributions">Illustrations by <a href="https://storyset.com/data" target="_blank">Storyset</a></p>
+    </footer>
+{{else}}
+    {{#custom-button class="signInBtn customButton default-light-button" click=(action 'login' 'google')}}Sign in with Google{{/custom-button}}
+{{/if}}

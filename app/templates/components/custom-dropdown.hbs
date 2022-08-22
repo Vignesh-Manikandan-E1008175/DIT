@@ -4,6 +4,6 @@
         <li><img src="/assets/icons/profile.png">Profile</li>
         <li><img src="/assets/icons/inbox.png">Inbox</li>
         <li><img src="/assets/icons/settings.png">Settings</li>
-        <li><img src="/assets/icons/logout.png">Logout</li>
+        <li {{action (action 'logout')}}><img src="/assets/icons/logout.png">Logout</li>
     </ul>
 {{/if}}
