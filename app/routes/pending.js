@@ -5,7 +5,8 @@ const {
 } = Ember;
 
 export default Route.extend({
+    userData: JSON.parse(window.sessionStorage.getItem('userData')),
     model() {
-        return this.get('store').findAll('todo');
+        return this.store.query('todo', { orderBy: 'uid', equalTo: this.get('userData').userId })
     }
 });
