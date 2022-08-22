@@ -3,8 +3,8 @@ import Ember from 'ember';
 const { Controller, computed, $ } = Ember;
 
 export default Controller.extend({
-    todos: computed.alias('model'),
-    // showTodoList: false,
+    users: computed.alias('model.users'),
+    todos: computed.alias('model.todos'),
     inCreateMode: false,
     init() {
         this._super(...arguments);
@@ -22,8 +22,7 @@ export default Controller.extend({
         createTodo: function () {
             let title = this.get('title');
             if (title.length > 0) {
-                this.send('createNewTask', { userId: 1, title: title });
-                // this.set('showTodoList', true);
+                this.send('createNewTask', { title: title });
                 this.set('inCreateMode', false);
                 this.set('title', '');
             } else {
@@ -35,6 +34,12 @@ export default Controller.extend({
             this.set('inCreateMode', false);
             this.set('title', '');
             this.send('cancelNewTodo', {});
+        },
+        login: function(provider) {
+            this.get('target').send('signIn', provider);
+        },
+        logout: function() {
+            this.get('target').send('signOut');
         }
     }
 });

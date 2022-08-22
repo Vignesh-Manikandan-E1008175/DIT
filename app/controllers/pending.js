@@ -4,7 +4,7 @@ const { Controller, computed } = Ember;
 
 export default Controller.extend({
     todos: computed.alias('model'),
-    pendingTodos: Ember.computed('todos.@each.completed', function() {
+    pendingTodos: computed('todos.@each.completed', function() {
         return this.store.peekAll('todo').filter(function(todo) {
             return todo.get('completed') === false;
         });
