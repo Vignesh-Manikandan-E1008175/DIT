@@ -41,6 +41,8 @@
     "ember-resolver": "^2.0.3",
     "emberfire": "2.0.10",
     "loader.js": "^4.0.10",
-    "sass": "1.53.0"
-  }
+    "sass": "1.53.0",
+    "torii": "0.10.1"
+  },
+  "dependencies": {}
 }

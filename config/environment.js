@@ -1,6 +1,7 @@
 /* jshint node: true */
 
 module.exports = function(environment) {
+
   var ENV = {
     modulePrefix: 'dit',
     environment: environment,
@@ -16,7 +17,9 @@ module.exports = function(environment) {
         Date: false
       }
     },
-
+    torii: {
+      sessionServiceName: 'session'
+    },
     APP: {
       // Here you can pass flags/options to your application instance
       // when it is created
@@ -30,7 +33,7 @@ module.exports = function(environment) {
       storageBucket: "newagent-24020.appspot.com",
       messagingSenderId: "668972350559",
       appId: "1:668972350559:web:090179e90e8618141cefea"
-    },
+    }
   };
 
   if (environment === 'development') {
