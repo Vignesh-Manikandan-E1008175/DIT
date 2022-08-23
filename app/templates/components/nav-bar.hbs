@@ -3,9 +3,7 @@
         {{#link-to "index"}}
             <img src="/assets/images/dit-logo-dark.svg" alt="logo">
         {{/link-to}}
-        {{#each users as |user|}}
-            <p>Hello, <i>{{user.userName}}</i> 👋</p>
-        {{/each}}
+        <p>Hello, <i>{{displayName}}</i> 👋</p>
     </li>
     <li class="navbar__item navbar__item--user">
         {{custom-dropdown class="user__dropdown"}}

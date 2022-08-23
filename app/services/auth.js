@@ -8,6 +8,7 @@ export default Ember.Service.extend({
     userData: JSON.parse(window.sessionStorage.getItem('userData')),
     init() {
         this._super(...arguments);
+        this.get('session').set('isAuthenticated', false);
     },
     signIn: function(provider, callback) {
         let store = this.get('store');
@@ -19,6 +20,7 @@ export default Ember.Service.extend({
                 provider: data.provider
             };
             window.sessionStorage.setItem('userData', JSON.stringify(currUser));
+            console.log(window.sessionStorage.getItem('userData'));
 
             // check if user is present in store, else create one
             store.findRecord('user', currUser.userId).then(function (user) {
@@ -32,8 +34,7 @@ export default Ember.Service.extend({
                 newUser.save();
             });
         }).finally(function() {
-            // this.refresh();
-            callback(); // call post sign-in callback to refresh app's model
+            callback();
         });
     },
     signOut: function() {
