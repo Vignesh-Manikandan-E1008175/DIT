@@ -10,6 +10,7 @@ Router.map(function() {
   this.route('not-found', { path: '/*path'});
   this.route('pending');
   this.route('completed');
+  this.route('all');
 });
 
 export default Router;
